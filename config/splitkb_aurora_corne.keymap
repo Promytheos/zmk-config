@@ -13,8 +13,6 @@
   flavor = "tap-preferred";
 };
 
-&ext_power EP_OFF 
-
 / {
         keymap {
                 compatible = "zmk,keymap";
