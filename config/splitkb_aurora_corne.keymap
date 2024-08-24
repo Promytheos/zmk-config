@@ -7,6 +7,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/backlight.h>
 
 #define DEFAULT    0
 #define NUMBER     1
@@ -69,10 +71,10 @@
 // | BTCLRALL |       |        |     |     |     |   |     | PREV | PAUSE | NEXT | MUTE | VOL DOWN |
 //                             |     |     | SPC |   | ENT |      | ALT   |
                         bindings = <
-   &bt BT_CLR_ALL &bt BT_CLR  &bt BT_PRV &bt BT_NXT   &trans       &trans           &kp C_PREV &kp C_PP &kp C_NEXT  &kp C_MUTE  &kp C_VOL_DN   &kp C_VOL_UP
-   &kp F1         &kp F2      &kp F3     &kp F4       &kp F5       &kp F6           &kp F7     &kp F8   &kp F9      &kp F10     &kp F11        &kp F12
-   &ext_power EP_ON &ext_power EP_OFF &trans     &trans       &trans       &trans           &trans     &trans   &trans      &trans      &trans         &trans
-                                         &trans       &trans       &trans           &trans     &trans   &trans
+   &bt BT_CLR_ALL   &bt BT_CLR        &bt BT_PRV &bt BT_NXT   &trans       &trans           &kp C_PREV &kp C_PP &kp C_NEXT  &kp C_MUTE  &kp C_VOL_DN   &kp C_VOL_UP
+   &kp F1           &kp F2            &kp F3     &kp F4       &kp F5       &kp F6           &kp F7     &kp F8   &kp F9      &kp F10     &kp F11        &kp F12
+   &ext_power EP_ON &ext_power EP_OFF &trans     &trans       &trans       &trans           &trans     &trans   &trans      &trans      &bl BL_CYCLE   &bl BL_TOG
+                                                 &trans       &trans       &trans           &trans     &trans   &trans
                         >;
                 };
         };
