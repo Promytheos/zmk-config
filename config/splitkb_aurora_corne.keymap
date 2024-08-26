@@ -7,8 +7,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT    0
 #define NUMBER     1
@@ -25,15 +23,15 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | TAB  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  RET |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  '   |
-//                    | FUN | NUM | SPC |   | SPC | SYM  | ALT |
+// |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | - |
+// | TAB  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  ' |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  \   |
+//                    | SYM | NUM | ENT |   | SPC | BKSPC  | FN |
                         bindings = <
    &gresc    &kp Q      &kp W      &kp E             &kp R             &kp T           &kp Y      &kp U        &kp I       &kp O       &kp P          &kp MINUS
    &kp TAB   &mt LGUI A &mt LALT S &mt LSHFT D       &mt LCTRL F       &kp G           &kp H      &mt RCTRL J  &mt RSHFT K &mt RALT L  &mt RGUI SEMI  &kp SQT 
    &kp LSHFT &kp Z      &kp X      &kp C             &kp V             &kp B           &kp N      &kp M        &kp COMMA   &kp DOT     &kp FSLH       &kp BSLH
-                                   &mo FUNCTION      &mo NUMBER        &kp RET         &kp SPACE  &kp BSPC     &mo SYMBOL
+                                   &mo SYMBOL        &mo NUMBER        &kp RET         &kp SPACE  &kp BSPC     &mo FUNCTION
                         >;
                 };
                 number_layer {
@@ -53,14 +51,14 @@
                 symbol_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+// | CTRL |     |     |     |     |     |   |  L  |  D  |  U  |  R  |  [  |  ]   |
+// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
    &kp GRAVE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR &trans
    &trans    &trans   &trans &trans   &trans   &trans         &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp LBKT &kp RBKT
    &trans    &trans   &trans &trans   &trans   &trans         &trans    &trans    &trans    &trans    &trans   &trans
-                             &kp LGUI &trans   &kp SPACE      &kp RET   &trans    &kp RALT
+                             &trans   &trans   &trans         &trans    &trans    &trans
                         >;
                 };
 
@@ -71,10 +69,10 @@
 // | BTCLRALL |       |        |     |     |     |   |     | PREV | PAUSE | NEXT | MUTE | VOL DOWN |
 //                             |     |     | SPC |   | ENT |      | ALT   |
                         bindings = <
-   &bt BT_CLR_ALL   &bt BT_CLR        &bt BT_PRV &bt BT_NXT  &none    &none              &kp C_PREV        &kp C_PP         &kp C_NEXT       &kp C_MUTE      &kp C_VOL_DN     &kp C_VOL_UP
-   &kp F1           &kp F2            &kp F3     &kp F4      &kp F5   &kp F6             &kp F7            &kp F8           &kp F9           &kp F10         &kp F11          &kp F12
-   &ext_power EP_ON &ext_power EP_OFF &none      &none       &none    &rgb_ug RGB_EFF    &rgb_ug RGB_HUD   &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI &rgb_ug RGB_BRD  &rgb_ug RGB_BRI
-                                                 &none       &none    &none              &rgb_ug RGB_TOG   &rgb_ug RGB_SPD  &rgb_ug RGB_SPI
+   &bt BT_PRV  &bt BT_NXT  &none   &none   &bt BT_CLR   &bt BT_CLR_ALL     &kp C_PREV  &kp C_PP  &kp C_NEXT  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP
+   &kp F1      &kp F2      &kp F3  &kp F4  &kp F5       &kp F6             &kp F7      &kp F8    &kp F9      &kp F10     &kp F11       &kp F12
+   &none       &none       &none   &none   &none        &none              &none       &none     &none       &none       &none         &none
+                                   &none   &none        &none              &none       &none     &none
                         >;
                 };
         };
