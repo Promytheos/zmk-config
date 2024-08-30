@@ -1,0 +1,11 @@
+# Copyright (c) 2022 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_VORTEX_CORNE_CENTER
+    def_bool $(shields_list_contains,vortex_corne_center)
+
+config SHIELD_VORTEX_CORNE_LEFT
+    def_bool $(shields_list_contains,vortex_corne_left)
+
+config SHIELD_VORTEX_CORNE_RIGHT
+    def_bool $(shields_list_contains,vortex_corne_right)
