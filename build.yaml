@@ -19,7 +19,7 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: vortex_corne_center
+    shield: vortex_corne_center nice_view_adapter nice_view
   - board: nice_nano_v2
     shield: vortex_corne_left nice_view_adapter nice_view
   - board: nice_nano_v2
