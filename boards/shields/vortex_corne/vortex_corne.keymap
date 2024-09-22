@@ -12,6 +12,7 @@
 #define NUMBER     1
 #define SYMBOL     2
 #define FUNCTION   3
+#define GAMING     4
 
 &mt {
   flavor = "tap-preferred";
@@ -28,10 +29,10 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  \  |
 //                    | SYM | NUM | ENT |   | SPC | BKSPC  | FN |
                         bindings = <
-   &kp ESC    &kp Q       &kp W       &kp E        &kp R        &kp T           &kp Y      &kp U        &kp I         &kp O       &kp P          &kp MINUS
-   &kp TAB    &mt LGUI A  &mt LALT S  &mt LSHFT D  &mt LCTRL F  &kp G           &kp H      &mt RCTRL J  &mt RSHFT K   &mt RALT L  &mt RGUI SEMI  &kp SQT 
-   &kp LSHFT  &kp Z       &kp X       &kp C        &kp V        &kp B           &kp N      &kp M        &kp COMMA     &kp DOT     &kp FSLH       &kp BSLH
-                                      &mo SYMBOL   &mo NUMBER   &kp RET         &kp SPACE  &kp BSPC     &mo FUNCTION
+   &kp ESC      &kp Q        &kp W        &kp E         &kp R         &kp T        &kp Y       &kp U         &kp I          &kp O        &kp P           &kp MINUS
+   &kp TAB      &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F   &kp G        &kp H       &mt RCTRL J   &mt RSHFT K    &mt RALT L   &mt RGUI SEMI   &kp SQT 
+   &to GAMING   &kp Z        &kp X        &kp C         &kp V         &kp B        &kp N       &kp M         &kp COMMA      &kp DOT      &kp FSLH        &kp BSLH
+                                          &mo SYMBOL    &mo NUMBER    &kp RET      &kp SPACE   &kp BSPC      &mo FUNCTION
                         >;
                 };
                 number_layer {
@@ -55,9 +56,9 @@
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp GRAVE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT      &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR  &trans
-   &trans     &trans    &trans  &trans    &trans    &trans         &kp LEFT   &kp DOWN  &kp UP     &kp RIGHT  &kp LBKT  &kp RBKT
-   &trans     &trans    &trans  &trans    &trans    &trans         &trans     &trans    &trans     &trans     &trans    &trans
+   &kp GRAVE   &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT      &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR  &trans
+   &kp CAPS    &trans    &trans  &trans    &trans    &trans         &kp LEFT   &kp DOWN  &kp UP     &kp RIGHT  &kp LBKT  &kp RBKT
+   &trans      &trans    &trans  &trans    &trans    &trans         &trans     &trans    &trans     &trans     &trans    &trans
                                 &trans    &trans    &trans         &trans     &trans    &trans
                         >;
                 };
@@ -73,6 +74,20 @@
    &kp F1      &kp F2      &kp F3  &kp F4  &kp F5       &kp F6             &kp F7      &kp F8    &kp F9      &kp F10     &kp F11       &kp F12
    &none       &none       &none   &none   &none        &none              &none       &none     &none       &none       &none         &none
                                    &none   &none        &none              &none       &none     &none
+                        >;
+                };
+
+                gaming_layer {
+// -----------------------------------------------------------------------------------------
+// | ESC  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |  -  |
+// | TAB  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '  |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |  \  |
+//                    |     |     |     |   |     |     |     |
+                        bindings = <
+   &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T        &kp Y   &kp U   &kp I       &kp O     &kp P      &kp MINUS
+   &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G        &kp H   &kp J   &kp K       &kp L     &kp SEMI   &kp SQT
+   &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B        &kp N   &kp M   &kp COMMA   &kp DOT   &kp FSLH   &to DEFAULT
+                               &kp LCTRL   &kp LALT   &kp RET      &none   &none   &kp RGUI
                         >;
                 };
         };
