@@ -19,6 +19,17 @@
 };
 
 / {
+    behaviors {
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+    };
+};
+/ {
         keymap {
                 compatible = "zmk,keymap";
 
@@ -32,7 +43,7 @@
    &kp ESC      &kp Q        &kp W        &kp E         &kp R         &kp T        &kp Y       &kp U         &kp I          &kp O        &kp P           &kp MINUS
    &kp TAB      &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F   &kp G        &kp H       &mt RCTRL J   &mt RSHFT K    &mt RALT L   &mt RGUI SEMI   &kp SQT 
    &to GAMING   &kp Z        &kp X        &kp C         &kp V         &kp B        &kp N       &kp M         &kp COMMA      &kp DOT      &kp FSLH        &kp BSLH
-                                          &mo SYMBOL    &mo NUMBER    &kp RET      &kp SPACE   &kp BSPC      &mo FUNCTION
+                                          &mo SYMBOL    &mo NUMBER    &kp RET      &kp SPACE   &bspc_del     &mo FUNCTION
                         >;
                 };
                 number_layer {
