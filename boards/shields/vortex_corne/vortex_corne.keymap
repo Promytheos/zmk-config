@@ -9,10 +9,10 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT    0
-#define NUMBER     1
-#define SYMBOL     2
-#define FUNCTION   3
-#define GAMING     4
+#define GAMING     1
+#define NUMBER     2
+#define SYMBOL     3
+#define FUNCTION   4
 
 &mt {
   flavor = "tap-preferred";
@@ -42,10 +42,25 @@
                         bindings = <
    &kp ESC      &kp Q        &kp W        &kp E         &kp R         &kp T        &kp Y       &kp U         &kp I          &kp O        &kp P           &kp MINUS
    &kp TAB      &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F   &kp G        &kp H       &mt RCTRL J   &mt RSHFT K    &mt RALT L   &mt RGUI SEMI   &kp SQT 
-   &tog GAMING   &kp Z        &kp X        &kp C         &kp V         &kp B        &kp N       &kp M         &kp COMMA      &kp DOT      &kp FSLH        &kp BSLH
+   &to GAMING   &kp Z        &kp X        &kp C         &kp V         &kp B        &kp N       &kp M         &kp COMMA      &kp DOT      &kp FSLH        &kp BSLH
                                           &mo SYMBOL    &mo NUMBER    &kp RET      &kp SPACE   &bspc_del     &mo FUNCTION
                         >;
                 };
+
+                gaming_layer {
+// -----------------------------------------------------------------------------------------
+// | ESC  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |  -  |
+// | TAB  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '  |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |  \  |
+//                    |     |     |     |   |     |     |     |
+                        bindings = <
+   &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T        &kp Y       &kp U      &kp I       &kp O     &kp P      &kp MINUS
+   &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G        &kp H       &kp J      &kp K       &kp L     &kp SEMI   &kp SQT
+   &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B        &kp N       &kp M      &kp COMMA   &kp DOT   &kp FSLH   &to DEFAULT
+                               &kp LCTRL   &kp LALT   &kp RET      &kp SPACE   &kp RGUI   &mo FUNCTION
+                        >;
+                };
+
                 number_layer {
 // -----------------------------------------------------------------------------------------
 // |     |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  -  |
@@ -88,18 +103,5 @@
                         >;
                 };
 
-                gaming_layer {
-// -----------------------------------------------------------------------------------------
-// | ESC  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |  -  |
-// | TAB  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '  |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |  \  |
-//                    |     |     |     |   |     |     |     |
-                        bindings = <
-   &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T        &kp Y       &kp U      &kp I       &kp O     &kp P      &kp MINUS
-   &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G        &kp H       &kp J      &kp K       &kp L     &kp SEMI   &kp SQT
-   &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B        &kp N       &kp M      &kp COMMA   &kp DOT   &kp FSLH   &tog GAMING
-                               &kp LCTRL   &kp LALT   &kp RET      &kp SPACE   &kp RGUI   &mo FUNCTION
-                        >;
-                };
         };
 };
