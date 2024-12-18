@@ -36,14 +36,6 @@
       keep-mods = <(MOD_RSFT)>;
     };
 
-    &mmv {
-      compatible = "zmk,behavior-input-two-axis";
-      x-input-code = <INPUT_REL_X>;
-      y-input-code = <INPUT_REL_Y>;
-      time-to-max-speed-ms = <300>;
-      acceleration-exponent = <2>;
-    };
-
     mv_scrl_left: move_scroll_left {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -55,19 +47,19 @@
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&mmv MOVE_DOWN>, <&msc SCRL_DOWN>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
     mv_scrl_up: move_scroll_up {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&mmv MOVE_UP>, <&msc SCRL_UP>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
     mv_scrl_right: move_scroll_right {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&mmv MOVE_RIGHT>, <&msc SCRL_RIGHT>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
   };
 };
