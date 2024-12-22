@@ -5,6 +5,7 @@
  */
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/outputs.h>
@@ -49,12 +50,14 @@
       bindings = <&mmv MOVE_DOWN>, <&msc SCRL_DOWN>;
       mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
+
     mv_scrl_up: move_scroll_up {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&mmv MOVE_UP>, <&msc SCRL_UP>;
       mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
+
     mv_scrl_right: move_scroll_right {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -76,13 +79,13 @@
 
     combo_reset {
       timeout-ms = <50>;
-      key-positions = <38 39>;
+      key-positions = <16 19 38 39>;
       bindings = <&sys_reset>;
     };
 
     combo_bootloader {
       timeout-ms = <50>;
-      key-positions = <16 19 38 39>;
+      key-positions = <17 18 38 39>;
       bindings = <&bootloader>;
     };
 
