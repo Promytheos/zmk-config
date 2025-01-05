@@ -69,6 +69,6 @@
       #binding-cells = <0>;
       bindings = <&out OUT_TOG>, <&out OUT_USB>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
-    }
+    };
   };
 };
