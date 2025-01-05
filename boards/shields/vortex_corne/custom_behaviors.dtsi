@@ -1,0 +1,74 @@
+/ {
+  behaviors {
+    bspc_del: backspace_delete {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp BACKSPACE>, <&kp DELETE>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+      keep-mods = <(MOD_RSFT)>;
+    };
+
+    mv_scrl_left: move_scroll_left {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&mmv MOVE_LEFT>, <&msc SCRL_LEFT>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+
+    mv_scrl_down: move_scroll_down {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&mmv MOVE_DOWN>, <&msc SCRL_DOWN>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+
+    mv_scrl_up: move_scroll_up {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&mmv MOVE_UP>, <&msc SCRL_UP>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+
+    mv_scrl_right: move_scroll_right {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&mmv MOVE_RIGHT>, <&msc SCRL_RIGHT>;
+      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+    };
+
+    bt_sel_clr_0: bt_sel_clr_0 {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&bt BT_SEL 0>, <&bt BT_SEL 0 &bt BT_CLR>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    bt_sel_clr_1: bt_sel_clr_1 {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&bt BT_SEL 1>, <&bt BT_SEL 1 &bt BT_CLR>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    bt_sel_clr_2: bt_sel_clr_2 {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&bt BT_SEL 2>, <&bt BT_SEL 2 &bt BT_CLR>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    bt_sel_clr_3: bt_sel_clr_3 {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&bt BT_SEL 3>, <&bt BT_SEL 3 &bt BT_CLR>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    out_tog: out_tog {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&out OUT_TOG>, <&out OUT_USB>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    }
+  };
+};

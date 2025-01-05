@@ -8,16 +8,22 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
 #include <behaviors.dtsi>
+#include "./custom_behaviors.dtsi"
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define DEFAULT    0
-#define GAMING     1
-#define NUMBER     2
-#define FUNCTION   3
-#define MOUSE      4
+#define DEF     0
+#define TAP     1
+#define NAV     2
+#define MSE     3
+#define BUT     4
+#define MED     5
+#define NUM     6
+#define SYM     7
+#define FUN     8
+#define GAM     9
 
 &mt {
   flavor = "tap-preferred";
@@ -25,46 +31,6 @@
 
 &caps_word {
   continue-list = <UNDERSCORE MINUS>;
-}; 
-
-/ {
-  behaviors {
-    bspc_del: backspace_delete {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp BACKSPACE>, <&kp DELETE>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-      keep-mods = <(MOD_RSFT)>;
-    };
-
-    mv_scrl_left: move_scroll_left {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&mmv MOVE_LEFT>, <&msc SCRL_LEFT>;
-      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    };
-
-    mv_scrl_down: move_scroll_down {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&mmv MOVE_DOWN>, <&msc SCRL_DOWN>;
-      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    };
-
-    mv_scrl_up: move_scroll_up {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&mmv MOVE_UP>, <&msc SCRL_UP>;
-      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    };
-
-    mv_scrl_right: move_scroll_right {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&mmv MOVE_RIGHT>, <&msc SCRL_RIGHT>;
-      mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
-    };
-  };
 };
 
 / {
@@ -74,7 +40,7 @@
       timeout-ms = <50>;
       key-positions = <16 19>;
       bindings = <&caps_word>;
-      layers = <DEFAULT>;
+      layers = <DEF>;
     };
 
     combo_reset {
@@ -93,7 +59,7 @@
       timeout-ms = <50>;
       key-positions = <38 39>;
       bindings = <&mkp MCLK>;
-      layers = <MOUSE>;
+      layers = <MSE>;
     };
   };
 };
@@ -104,10 +70,82 @@
 
     default_layer {
       bindings = <
-        &kp ESC      &kp Q        &kp W        &kp E         &kp R         &kp T        &kp Y       &kp U         &kp I          &kp O        &kp P           &kp MINUS
-        &kp TAB      &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F   &kp G        &kp H       &mt RCTRL J   &mt RSHFT K    &mt RALT L   &mt RGUI SEMI   &kp SQT 
-        &to GAMING   &kp Z        &kp X        &kp C         &kp V         &kp B        &kp N       &kp M         &kp COMMA      &kp DOT      &kp FSLH        &kp BSLH
-                                               &mo FUNCTION  &mo NUMBER    &kp RET      &kp SPACE   &bspc_del     &tog MOUSE
+        &none   &kp Q        &kp W        &kp E         &kp R           &kp T            &kp Y         &kp U           &kp I         &kp O        &kp P           &none
+        &none   &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F     &kp G            &kp H         &mt RCTRL J     &mt RSHFT K   &mt RALT L   &mt RGUI SEMI   &none
+        &none   &kp Z        &kp X        &kp C         &kp V           &kp B            &kp N         &kp M           &kp COMMA     &kp DOT      &kp FSLH        &none
+                                          &lt FUN DEL   &lt NUM BSPC    &lt SYM RET      &lt MSE TAB   &lt NAV SPACE   &lt MED ESC
+      >;
+    };
+
+    tap_layer {
+      bindings = <
+        &none   &kp Q   &kp W   &kp E     &kp R      &kp T        &kp Y     &kp U       &kp I       &kp O     &kp P      &to DEF
+        &none   &kp A   &kp S   &kp D     &kp F      &kp G        &kp H     &kp J       &kp K       &kp L     &kp SEMI   &none
+        &none   &kp Z   &kp X   &kp C     &kp V      &kp B        &kp N     &kp M       &kp COMMA   &kp DOT   &kp FSLH   &none
+                                &kp DEL   &kp BSPC   &kp RET      &kp TAB   &kp SPACE   &kp ESC
+      >;
+    };
+
+    navigation_layer {
+      bindings = <
+        &none  &none     &none     &none      &none       &none          &kp K_REDO   &kp K_PASTE  &kp K_COPY   &kp K_CUT   &kp K_UNDO  &none
+        &none  &kp LGUI  &kp LALT  &kp LSHFT  &kp LCTRL   &none          &kp CLCK     &kp LEFT     &kp DOWN     &kp UP      &kp RIGHT   &none
+        &none  &none     &none     &none      &none       &none          &kp INS      &kp HOME     &kp PG_DN    &kp PG_UP   &kp END     &none
+                                   &kp DEL    &kp BSPC    &kp RET        &none        &none        &none
+      >;
+    };
+
+    mouse_layer {
+      bindings = <
+        &none   &bootloader   &to TAP    &to EXT     &to DEF     &none          &kp K_REDO   &kp K_PASTE      &kp K_COPY       &kp K_CUT      &kp K_UNDO        &none
+        &none   &kp LGUI      &kp LALT   &kp LSHFT   &kp LCTRL   &none          &none        &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &none
+        &none   &none         &none      &none       &none       &none          &none        &msc SCRL_RIGHT  &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &none
+                                         &none       &none       &none          &mkp RCLK    &mkp LCLK        &mkp MCLK
+      >;
+    };
+
+    button_layer {
+      bindings = <
+        &none  &kp K_UNDO   &kp K_CUT   &kp K_COPY   &kp K_PASTE   &kp K_REDO         &kp K_REDO   &kp K_PASTE   &kp K_COPY   &kp K_CUT   &kp K_UNDO   &none
+        &none  &kp LGUI     &kp LALT    &kp LSHFT    &kp LCTRL     &none              &none        &kp RCTRL     &kp RSHFT    &kp RALT    &kp RGUI     &none
+        &none  &kp K_UNDO   &kp K_CUT   &kp K_COPY   &kp K_PASTE   &kp K_REDO         &kp K_REDO   &kp K_PASTE   &kp K_COPY   &kp K_CUT   &kp K_UNDO   &none
+                                        &mkp MCLK    &mkp LCLK     &mkp RCLK          &mkp RCLK    &mkp LCLK     &mkp MCLK
+      >;
+    };
+
+    media_layer {
+      bindings = <
+        &none   &bootloader     &to TAP         &to EXT         &to DEF         &none         &none   &none       &none       &none      &none      &none
+        &none   &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &none         &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
+        &none   &bt_sel_clr_0   &bt_sel_clr_1   &bt_sel_clr_2   &bt_sel_clr_3   &out_tog      &none   &none       &none       &none      &none      &none
+                                                &kp C_MUTE      &kp C_PP        &none         &none   &kp C_PP    &kp C_MUTE
+      >;
+    };
+
+    number_layer {
+      bindings = <
+         &none   &bootloader   &to TAP    &to EXT     &to DEF     &none      &kp LBKT    &kp N7   &kp N8   &kp N9   &kp RBKT    &none
+         &none   &kp LGUI      &kp LALT   &kp LSHFT   &kp LCTRL   &none      &kp EQUAL   &kp N4   &kp N5   &kp N6   &kp SEMI    &none
+         &none   &none         &none      &none       &none       &none      &kp BSLSH   &kp N1   &kp N2   &kp N3   &kp GRAVE   &none
+                                          &none       &none       &none      &kp MINUS   &kp N0   &kp DOT
+      >;
+    };
+
+    symbol_layer {
+      bindings = <
+        &none   &bootloader   &to TAP    &to EXT     &to DEF     &none          &kp LBRC    &kp AMPS   &kp ASTRK   &kp LPAR    &kp RBRC    &none
+        &none   &kp LGUI      &kp LALT   &kp LSHFT   &kp LCTRL   &none          &kp PLUS    &kp DLLR   &kp PRCNT   &kp CARET   &kp COLON   &none
+        &none   &none         &none      &none       &none       &none          &kp PIPE    &kp EXCL   &kp AT      &kp HASH    &kp TILDE   &none
+                                         &none       &none       &mkp RCLK      &kp UNDER   &kp LPAR   &kp RPAR
+      >;
+    };
+
+    fn_layer {
+      bindings = <
+        &none   &bootloader   &to TAP   &to EXT   &to DEF   &none      &kp PSCRN         &kp F7      &kp F8   &kp F9   &kp F12   &none
+        &none   &none         &none     &none     &none     &none      &kp SLCK          &kp F4      &kp F5   &kp F6   &kp F11   &none
+        &none   &none         &none     &none     &none     &none      &kp PAUSE_BREAK   &kp F1      &kp F2   &kp F3   &kp F10   &none
+                                        &none     &none     &none      &kp TAB           &kp SPACE   &kp KAPP
       >;
     };
 
@@ -115,35 +153,8 @@
       bindings = <
         &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T          &kp Y     &kp U      &kp I       &kp O     &kp P      &kp MINUS
         &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G          &kp H     &kp J      &kp K       &kp L     &kp SEMI   &kp SQT
-        &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B          &kp N     &kp M      &kp COMMA   &kp DOT   &kp FSLH   &to DEFAULT
-                                    &kp LCTRL   &kp LALT   &kp SPACE      &kp RET   &kp RGUI   &mo FUNCTION
-      >;
-    };
-
-    number_layer {
-      bindings = <
-        &kp GRAVE  &none        &none        &none         &none         &none           &none       &none         &none         &kp LBKT     &kp RBKT     &kp MINUS
-        &kp TAB    &mt LGUI N1  &mt LALT N2  &mt LSHFT N3  &mt LCTRL N4  &kp N5          &kp N6      &mt RCTRL N7  &mt RSHFT N8  &mt RALT N9  &mt RGUI N0  &kp EQUAL
-        &none      &none        &none        &none         &none         &none           &none       &none         &kp COMMA     &kp DOT      &kp FSLH     &kp BSLH
-                                             &none         &none         &kp RET         &kp SPACE   &bspc_del     &mo FUNCTION
-      >;
-    };
-
-    fn_layer {
-      bindings = <
-        &none  &kp F1    &kp F2    &kp F3    &kp F4       &none             &kp C_PREV  &kp C_PP    &kp C_NEXT   &kp C_MUTE        &kp C_VOL_DN  &kp C_VOL_UP
-        &none  &kp F5    &kp F6    &kp F7    &kp F8       &none             &kp LEFT    &kp DOWN    &kp UP       &kp RIGHT         &none         &none
-        &none  &kp F9    &kp F10   &kp F11   &kp F12      &none             &bt BT_PRV  &bt BT_NXT  &bt BT_CLR   &bt BT_CLR_ALL    &none         &none
-                                   &none     &none        &none             &none       &none       &out OUT_TOG
-      >;
-    };
-
-    mouse_layer {
-      bindings = <
-        &none  &none    &none    &none    &none       &none             &none             &none             &none           &none             &none    &none
-        &none  &kp LGUI    &kp LALT    &kp LSHFT    &kp LCTRL       &none             &mv_scrl_left    &mv_scrl_down    &mv_scrl_up    &mv_scrl_right   &none    &none
-        &none  &none    &none    &none    &none       &none             &none             &none             &none           &none             &none    &none
-                                 &none    &none       &mkp RCLK         &mkp LCLK         &none             &tog MOUSE
+        &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B          &kp N     &kp M      &kp COMMA   &kp DOT   &kp FSLH   &to DEF
+                                    &kp LCTRL   &kp LALT   &kp SPACE      &kp RET   &kp RGUI   &mo FUN
       >;
     };
   };
