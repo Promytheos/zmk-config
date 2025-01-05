@@ -70,5 +70,89 @@
       bindings = <&out OUT_TOG>, <&out OUT_USB>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
+
+    to_BASE: to_BASE {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to BASE>;
+    };
+
+    to_TAP: to_TAP {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to TAP>;
+    };
+
+    to_NAV: to_NAV {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to NAV>;
+    };
+
+    to_MSE: to_MSE {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to MSE>;
+    };
+
+    to_BUT: to_BUT {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to BUT>;
+    };
+
+    to_MED: to_MED {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to MED>;
+    };
+
+    to_NUM: to_NUM {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to NUM>;
+    };
+
+    to_SYM: to_SYM {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to SYM>;
+    };
+
+    to_FUN: to_FUN {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to FUN>;
+    };
+
+    to_EXT: to_EXT {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&to EXT>;
+    };
+
+    reset_boot: reset_boot {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&sysreset>, <&bootloader>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    to_reset: to_reset {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&none>, <&reset_boot>;
+    };
   };
 };
