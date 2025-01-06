@@ -1,13 +1,5 @@
 / {
   behaviors {
-    bspc_del: backspace_delete {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp BACKSPACE>, <&kp DELETE>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-      keep-mods = <(MOD_RSFT)>;
-    };
-
     mv_scrl_left: move_scroll_left {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -141,18 +133,11 @@
       bindings = <&none>, <&to EXT>;
     };
 
-    reset_boot: reset_boot {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&sys_reset>, <&bootloader>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
     to_reset: to_reset {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&none>, <&reset_boot>;
+      bindings = <&none>, <&sys_reset>, <&bootloader>;
     };
   };
 };
