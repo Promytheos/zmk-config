@@ -109,10 +109,10 @@
 
     media_layer {
       bindings = <
-        &none   &none           &none           &none           &none           &none         &none   &to_BASE   &to_EXT     &to_TAP    &none   &none
-        &none   &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &none         &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
-        &none   &bt_sel_clr_0   &bt_sel_clr_1   &bt_sel_clr_2   &bt_sel_clr_3   &out_tog      &none   &to_MED     &to_FUN     &none      &none      &none
-                                                &kp C_MUTE      &kp C_PP        &none         &none   &kp C_PP    &kp C_MUTE
+        &none   &none           &none           &none           &none           &bt_clr_all      &none   &to_BASE    &to_EXT     &to_TAP    &none   &none
+        &none   &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &bt_clr          &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
+        &none   &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &out_tog         &none   &to_MED     &to_FUN     &none      &none      &none
+                                                &kp C_MUTE      &kp C_PP        &none            &none   &none       &none
       >;
     };
 
