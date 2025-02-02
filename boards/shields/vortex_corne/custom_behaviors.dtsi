@@ -56,13 +56,6 @@
       bindings = <&none>, <&to BASE>;
     };
 
-    to_TAP: to_TAP {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&none>, <&to TAP>;
-    };
-
     to_NAV: to_NAV {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
@@ -75,13 +68,6 @@
       #binding-cells = <0>;
       tapping-term-ms = <200>;
       bindings = <&none>, <&to MSE>;
-    };
-
-    to_BUT: to_BUT {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&none>, <&to BUT>;
     };
 
     to_MED: to_MED {
@@ -112,11 +98,11 @@
       bindings = <&none>, <&to FUN>;
     };
 
-    to_EXT: to_EXT {
+    to_GAM: to_GAM {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&none>, <&to EXT>;
+      bindings = <&none>, <&to GAM>;
     };
   };
 };

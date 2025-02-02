@@ -7,22 +7,23 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
+// Base Layers
+#define BASE    0
+#define GAM     1
+
+// Upper Layers
+#define NAV     2
+#define MSE     3
+#define MED     4
+#define NUM     5
+#define SYM     6
+#define FUN     7
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
-
-#define BASE    0
-#define TAP     1
-#define NAV     2
-#define MSE     3
-#define BUT     4
-#define MED     5
-#define NUM     6
-#define SYM     7
-#define FUN     8
-#define EXT     9
 
 #include "./custom_behaviors.dtsi"
 
@@ -71,18 +72,18 @@
       >;
     };
 
-    tap_layer {
+    gaming_layer {
       bindings = <
-        &none   &kp Q   &kp W   &kp E     &kp R      &kp T        &kp Y     &kp U       &kp I       &kp O     &kp P      &to_BASE
-        &none   &kp A   &kp S   &kp D     &kp F      &kp G        &kp H     &kp J       &kp K       &kp L     &kp SEMI   &none
-        &none   &kp Z   &kp X   &kp C     &kp V      &kp B        &kp N     &kp M       &kp COMMA   &kp DOT   &kp FSLH   &none
-                                &kp DEL   &kp BSPC   &kp RET      &kp TAB   &kp SPACE   &kp ESC
+        &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T          &kp Y     &kp U     &kp I          &kp O     &kp P      &kp MINUS
+        &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G          &kp H     &kp J     &kp K          &kp L     &kp SEMI   &kp SQT
+        &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B          &kp N     &kp M     &kp COMMA      &kp DOT   &kp FSLH   &to_BASE
+                                    &kp LCTRL   &kp LALT   &kp SPACE      &kp RET   &mo NAV   &mo MED
       >;
     };
 
     navigation_layer {
       bindings = <
-        &none  &none      &to_TAP    &to_EXT     &to_BASE    &none        &kp K_PASTE  &kp K_COPY   &kp K_CUT   &kp K_UNDO  &kp K_REDO   &none
+        &none  &none      &none      &to_GAM     &to_BASE    &none        &kp K_PASTE  &kp K_COPY   &kp K_CUT   &kp K_UNDO  &kp K_REDO   &none
         &none  &kp LGUI   &kp LALT   &kp LSHFT   &kp LCTRL   &none        &kp LEFT     &kp DOWN     &kp UP      &kp RIGHT   &kp CLCK     &none
         &none  &none      &none      &to_NUM     &to_NAV     &none        &kp HOME     &kp PG_DN    &kp PG_UP   &kp END     &kp INS      &none
                                      &kp DEL     &kp BSPC    &kp RET      &none        &none        &none
@@ -91,25 +92,16 @@
 
     mouse_layer {
       bindings = <
-        &none   &none      &to_TAP    &to_EXT     &to_BASE    &none          &kp K_PASTE      &kp K_COPY       &kp K_CUT      &kp K_UNDO        &kp K_REDO   &none
+        &none   &none      &none      &to_GAM     &to_BASE    &none          &kp K_PASTE      &kp K_COPY       &kp K_CUT      &kp K_UNDO        &kp K_REDO   &none
         &none   &kp LGUI   &kp LALT   &kp LSHFT   &kp LCTRL   &none          &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &none        &none
         &none   &none      &none      &to_SYM     &to_MSE     &none          &msc SCRL_RIGHT  &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &none        &none
                                       &mkp RCLK   &mkp LCLK   &mkp MCLK      &none       &none       &none
       >;
     };
 
-    button_layer {
-      bindings = <
-        &none  &kp K_UNDO   &kp K_CUT   &kp K_COPY   &kp K_PASTE   &kp K_REDO         &kp K_REDO   &kp K_PASTE   &kp K_COPY   &kp K_CUT   &kp K_UNDO   &none
-        &none  &kp LGUI     &kp LALT    &kp LSHFT    &kp LCTRL     &none              &none        &kp RCTRL     &kp RSHFT    &kp RALT    &kp RGUI     &none
-        &none  &kp K_UNDO   &kp K_CUT   &kp K_COPY   &kp K_PASTE   &kp K_REDO         &kp K_REDO   &kp K_PASTE   &kp K_COPY   &kp K_CUT   &kp K_UNDO   &none
-                                        &mkp MCLK    &mkp LCLK     &mkp RCLK          &mkp RCLK    &mkp LCLK     &mkp MCLK
-      >;
-    };
-
     media_layer {
       bindings = <
-        &none   &none           &none           &none           &none           &bt_clr_all      &none   &to_BASE    &to_EXT     &to_TAP    &none   &none
+        &none   &none           &none           &none           &none           &bt_clr_all      &none   &to_BASE    &to_GAM     &none    &none   &none
         &none   &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &bt_clr          &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
         &none   &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &out_tog         &none   &to_MED     &to_FUN     &none      &none      &none
                                                 &kp C_MUTE      &kp C_PP        &none            &none   &none       &none
@@ -118,7 +110,7 @@
 
     number_layer {
       bindings = <
-         &none   &none      &to_TAP    &to_EXT     &to_BASE    &none      &kp LBKT    &kp N7   &kp N8   &kp N9   &kp RBKT    &none
+         &none   &none      &none    &to_GAM     &to_BASE    &none      &kp LBKT    &kp N7   &kp N8   &kp N9   &kp RBKT    &none
          &none   &kp LGUI   &kp LALT   &kp LSHFT   &kp LCTRL   &none      &kp EQUAL   &kp N4   &kp N5   &kp N6   &kp SEMI    &none
          &none   &none      &none      &to_NAV     &to_NUM     &none      &kp BSLH    &kp N1   &kp N2   &kp N3   &kp GRAVE   &none
                                        &none       &none       &none      &kp MINUS   &kp N0   &kp DOT
@@ -127,7 +119,7 @@
 
     symbol_layer {
       bindings = <
-        &none   &none   &to_TAP    &to_EXT     &to_BASE    &none          &kp LBRC    &kp AMPS   &kp ASTRK   &kp LPAR    &kp RBRC    &none
+        &none   &none   &none    &to_GAM     &to_BASE    &none          &kp LBRC    &kp AMPS   &kp ASTRK   &kp LPAR    &kp RBRC    &none
         &none   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none          &kp PLUS    &kp DLLR   &kp PRCNT   &kp CARET   &kp COLON   &none
         &none   &none       &none      &to_MSE     &to_SYM     &none          &kp PIPE    &kp EXCL   &kp AT      &kp HASH    &kp TILDE   &none
                                        &none       &none       &mkp RCLK      &kp UNDER   &kp LPAR   &kp RPAR
@@ -136,19 +128,10 @@
 
     fn_layer {
       bindings = <
-        &none   &none       &to_TAP    &to_EXT     &to_BASE    &none      &kp PSCRN         &kp F7      &kp F8   &kp F9   &kp F12   &none
+        &none   &none       &none    &to_GAM     &to_BASE    &none      &kp PSCRN         &kp F7      &kp F8   &kp F9   &kp F12   &none
         &none   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none      &kp SLCK          &kp F4      &kp F5   &kp F6   &kp F11   &none
         &none   &none       &none      &to_MED     &to_FUN     &none      &kp PAUSE_BREAK   &kp F1      &kp F2   &kp F3   &kp F10   &none
                                        &none       &none       &none      &kp TAB           &kp SPACE   &kp K_APP
-      >;
-    };
-
-    gaming_layer {
-      bindings = <
-        &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T          &kp Y     &kp U           &kp I          &kp O     &kp P      &kp MINUS
-        &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G          &kp H     &kp J           &kp K          &kp L     &kp SEMI   &kp SQT
-        &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B          &kp N     &kp M           &kp COMMA      &kp DOT   &kp FSLH   &to_BASE
-                                    &kp LCTRL   &kp LALT   &kp SPACE      &kp RET   &lt NAV RALT    &lt MED RCTRL
       >;
     };
   };
