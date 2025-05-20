@@ -84,13 +84,6 @@
       bindings = <&none>, <&to NUM>;
     };
 
-    to_SYM: to_SYM {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&none>, <&to SYM>;
-    };
-
     to_FUN: to_FUN {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
