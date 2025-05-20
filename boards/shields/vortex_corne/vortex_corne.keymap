@@ -14,10 +14,9 @@
 // Upper Layers
 #define NAV     2
 #define MSE     3
-#define MED     4
-#define NUM     5
-#define SYM     6
-#define FUN     7
+#define NUM     4
+#define MED     5
+#define FUN     6
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/outputs.h>
@@ -66,18 +65,18 @@
     default_layer {
       bindings = <
         &none   &kp Q        &kp W        &kp E         &kp R           &kp T            &kp Y         &kp U           &kp I         &kp O        &kp P           &none
-        &none   &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F     &kp G            &kp H         &mt RCTRL J     &mt RSHFT K   &mt RALT L   &mt RGUI SQT   &none
+        &none   &mt LGUI A   &mt LALT S   &mt LSHFT D   &mt LCTRL F     &kp G            &kp H         &mt RCTRL J     &mt RSHFT K   &mt RALT L   &mt RGUI SQT    &none
         &none   &kp Z        &kp X        &kp C         &kp V           &kp B            &kp N         &kp M           &kp COMMA     &kp DOT      &kp FSLH        &none
-                                          &lt FUN DEL   &lt NUM BSPC    &lt SYM RET      &lt MSE TAB   &lt NAV SPACE   &lt MED ESC
+                                          &lt NAV DEL   &lt NUM BSPC    &lt MSE RET      &kp TAB       &lt FUN SPACE   &lt MED ESC
       >;
     };
 
     gaming_layer {
       bindings = <
         &kp ESC     &kp Q   &kp W   &kp E       &kp R      &kp T          &kp Y     &kp U     &kp I          &kp O     &kp P      &kp MINUS
-        &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G          &kp H     &kp J     &kp K          &kp L     &kp SEMI   &kp SQT
+        &kp TAB     &kp A   &kp S   &kp D       &kp F      &kp G          &kp H     &kp J     &kp K          &kp L     &kp SQT    &mo FUN
         &kp LSHFT   &kp Z   &kp X   &kp C       &kp V      &kp B          &kp N     &kp M     &kp COMMA      &kp DOT   &kp FSLH   &to_BASE
-                                    &kp LCTRL   &kp LALT   &kp SPACE      &kp RET   &mo NAV   &mo MED
+                                    &kp LCTRL   &kp SPACE  &kp LALT       &kp RET   &mo NAV   &mo MED
       >;
     };
 
@@ -85,7 +84,7 @@
       bindings = <
         &none  &none      &none      &to_GAM     &to_BASE    &none        &kp K_PASTE  &kp K_COPY   &kp K_CUT   &kp K_UNDO  &kp K_REDO   &none
         &none  &kp LGUI   &kp LALT   &kp LSHFT   &kp LCTRL   &none        &kp LEFT     &kp DOWN     &kp UP      &kp RIGHT   &kp CLCK     &none
-        &none  &none      &none      &to_NUM     &to_NAV     &none        &kp HOME     &kp PG_DN    &kp PG_UP   &kp END     &kp INS      &none
+        &none  &none      &none      &to_MED     &none       &none        &kp HOME     &kp PG_DN    &kp PG_UP   &kp END     &kp INS      &none
                                      &kp DEL     &kp BSPC    &kp RET      &none        &none        &none
       >;
     };
@@ -94,44 +93,35 @@
       bindings = <
         &none   &none      &none      &to_GAM     &to_BASE    &none          &kp K_PASTE      &kp K_COPY       &kp K_CUT      &kp K_UNDO        &kp K_REDO   &none
         &none   &kp LGUI   &kp LALT   &kp LSHFT   &kp LCTRL   &none          &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &none        &none
-        &none   &none      &none      &to_SYM     &to_MSE     &none          &msc SCRL_RIGHT  &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &none        &none
-                                      &mkp RCLK   &mkp LCLK   &mkp MCLK      &none       &none       &none
-      >;
-    };
-
-    media_layer {
-      bindings = <
-        &none   &none           &none           &none           &none           &bt_clr_all      &none   &to_BASE    &to_GAM     &none    &none   &none
-        &none   &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &bt_clr          &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
-        &none   &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &out_tog         &none   &to_MED     &to_FUN     &none      &none      &none
-                                                &kp C_MUTE      &kp C_PP        &none            &none   &none       &none
+        &none   &none      &none      &none       &none       &none          &msc SCRL_LEFT   &msc SCRL_DOWN   &msc SCRL_UP   &msc SCRL_RIGHT   &none        &none
+                                      &none       &none       &none          &mkp RCLK        &mkp LCLK        &mkp MCLK
       >;
     };
 
     number_layer {
       bindings = <
-         &none   &none      &none    &to_GAM     &to_BASE    &none      &kp LBKT    &kp N7   &kp N8   &kp N9   &kp RBKT    &none
+         &none   &none      &none      &to_GAM     &to_BASE    &none      &kp LBKT    &kp N7   &kp N8   &kp N9   &kp RBKT    &none
          &none   &kp LGUI   &kp LALT   &kp LSHFT   &kp LCTRL   &none      &kp EQUAL   &kp N4   &kp N5   &kp N6   &kp SEMI    &none
-         &none   &none      &none      &to_NAV     &to_NUM     &none      &kp BSLH    &kp N1   &kp N2   &kp N3   &kp GRAVE   &none
+         &none   &none      &none      &to_FUN     &none       &none      &kp BSLH    &kp N1   &kp N2   &kp N3   &kp GRAVE   &none
                                        &none       &none       &none      &kp MINUS   &kp N0   &kp DOT
       >;
     };
 
-    symbol_layer {
+    media_layer {
       bindings = <
-        &none   &none   &none    &to_GAM     &to_BASE    &none          &kp LBRC    &kp AMPS   &kp ASTRK   &kp LPAR    &kp RBRC    &none
-        &none   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none          &kp PLUS    &kp DLLR   &kp PRCNT   &kp CARET   &kp COLON   &none
-        &none   &none       &none      &to_MSE     &to_SYM     &none          &kp PIPE    &kp EXCL   &kp AT      &kp HASH    &kp TILDE   &none
-                                       &none       &none       &mkp RCLK      &kp UNDER   &kp LPAR   &kp RPAR
+        &none   &none           &none           &none           &none           &bt_clr_all      &none   &to_BASE    &to_GAM     &none      &none   &none
+        &none   &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &bt_clr          &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
+        &none   &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &out_tog         &none   &none       &to_NAV     &none      &none      &none
+                                                &kp C_MUTE      &kp C_PP        &none            &none   &none       &none
       >;
     };
 
     fn_layer {
       bindings = <
-        &none   &none       &none    &to_GAM     &to_BASE    &none      &kp PSCRN         &kp F7      &kp F8   &kp F9   &kp F12   &none
-        &none   &kp LGUI    &kp LALT   &kp LSHFT   &kp LCTRL   &none      &kp SLCK          &kp F4      &kp F5   &kp F6   &kp F11   &none
-        &none   &none       &none      &to_MED     &to_FUN     &none      &kp PAUSE_BREAK   &kp F1      &kp F2   &kp F3   &kp F10   &none
-                                       &none       &none       &none      &kp TAB           &kp SPACE   &kp K_APP
+        &none   &kp F12  &kp F7   &kp F8   &kp F9   &kp PSCRN            &none   &to_BASE    &to_GAM     &none      &none      &none
+        &none   &kp F11  &kp F4   &kp F5   &kp F6   &kp SLCK             &none   &kp RCTRL   &kp RSHFT   &kp RALT   &kp RGUI   &none
+        &none   &kp F10  &kp F1   &kp F2   &kp F3   &kp PAUSE_BREAK      &none   &none       &to_NUM     &none      &none      &none
+                                  &kp DEL  &kp BSPC &kp RET              &none   &none       &none
       >;
     };
   };
